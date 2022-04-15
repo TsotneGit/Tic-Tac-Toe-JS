@@ -4,6 +4,93 @@
 Home
 {% endblock %}
 
+{% block stylesheet %}
+<link
+    rel="stylesheet"
+    href={{
+    url_for('static',
+    filename='styles/board.css'
+    )}}
+>
+{% endblock %}
+
 {% block content %}
 
+<form
+    action=""
+    method="post"
+    id="board-form"
+    onsubmit="(e) => {e.preventDefault();}"
+>
+    <div class="game-board">
+
+        <div class="box"><input
+                type="submit"
+                value="{{_00}}"
+                name="00"
+            ></div>
+        <div class="box"><input
+                type="submit"
+                value="{{_01}}"
+                name="01"
+            ></div>
+        <div class="box"><input
+                type="submit"
+                value="{{_02}}"
+                name="02"
+            ></div>
+        <div class="box"><input
+                type="submit"
+                value="{{_10}}"
+                name="10"
+            ></div>
+        <div class="box"><input
+                type="submit"
+                value="{{_11}}"
+                name="11"
+            ></div>
+        <div class="box"><input
+                type="submit"
+                value="{{_12}}"
+                name="12"
+            ></div>
+        <div class="box"><input
+                type="submit"
+                value="{{_20}}"
+                name="20"
+            ></div>
+        <div class="box"><input
+                type="submit"
+                value="{{_21}}"
+                name="21"
+            ></div>
+        <div class="box"><input
+                type="submit"
+                value="{{_22}}"
+                name="22"
+            ></div>
+
+    </div>
+
+    <div
+        align="center"
+        id="reset"
+    >
+        <a href="/home"><button
+                type="submit"
+                class="btn btn-lg btn-secondary"
+                name="reset"
+            >Reset</button></a>
+</form>
+
+{% endblock %}
+
+{% block js %}
+<script
+    src={{
+    url_for('static',
+    filename='scripts/board_form.js'
+    )
+    }}
+></script>
 {% endblock %}
