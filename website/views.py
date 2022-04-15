@@ -37,16 +37,16 @@ def home():
         submitted = args.keys()
         for key in submitted:
             if key == "reset":
-                for key in submitted:
-                    if key != "reset":
-                        board_dict["_" + key] = "#"
-                break
-            if board_dict["_" + key] == "#":
-                board_dict["_" + key] = turn
+                for key1 in board_dict.keys():
+                    board_dict[key1] = "#"
+                return redirect(url_for("views.preventRefreshFromSubmit"))
             else:
-                flash("You can't overwrite a square!", category="error")
-        turn = ["X", "O"][turn == "X"]
-        return redirect(url_for("views.preventRefreshFromSubmit"))
+                if board_dict["_" + key] == "#":
+                    board_dict["_" + key] = turn
+                else:
+                    flash("You can't overwrite a square!", category="error")
+                turn = ["X", "O"][turn == "X"]
+                return redirect(url_for("views.preventRefreshFromSubmit"))
 
     return render_template("home.html", **board_dict)
 
